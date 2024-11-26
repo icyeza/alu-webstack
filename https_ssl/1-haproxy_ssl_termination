@@ -1,5 +1,4 @@
-
-bal
+global
     log /dev/log local0
     log /dev/log local1 notice
     chroot /var/lib/haproxy
@@ -36,7 +35,7 @@ defaults
 
 frontend clickviral-tech-frontend
     bind *:80
-    bind *:443 ssl crt /etc/letsencrypt/live/www.icyeza.tech/fullchain.pem key /etc/letsencrypt/live/www.icyeza.tech/privkey.pem
+    bind *:443 ssl crt /etc/letsencrypt/live/www.cletusaabugre.tech/fullchain.pem key /etc/letsencrypt/live/www.cletusaabugre.tech/privkey.pem
     acl path_acme_challenge path_beg /.well-known/acme-challenge/
     use_backend acme_backend if path_acme_challenge
     redirect scheme https code 301 if !{ ssl_fc }
@@ -45,7 +44,7 @@ frontend clickviral-tech-frontend
 backend clickviral-tech-backend
     balance roundrobin
     option httpchk GET /health-check
-    server 6321-web-01 51.91.2.150:80 check
+    server 6321-web-01 52.91.2.150:80 check
     server 6321-web-02 34.229.144.175:80 check
 
 backend acme_backend
